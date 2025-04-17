@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Complaint Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        .form-section h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.2em;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .radio-group {
+            margin: 15px 0;
+        }
+        .radio-option {
+            margin-bottom: 8px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .required:after {
+            content: " *";
+            color: red;
+        }
+        .hidden {
+            display: none;
+        }
+        .photo-requirements {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Complaint Form</h1>
+    
+    <form id="complaintForm" action="https://formsubmit.co/shaheerullah.hadi@foreverdirect.eu" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="New Product Complaint Submission">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        
+        <!-- Complaint Category Section -->
+        <div class="form-section">
+            <h2><span class="required">Complaint Category</span></h2>
+            <p>Please select the category that best describes your complaint:</p>
+            
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="logistic" name="complaint_category" value="Logistic Issues" required>
+                    <label for="logistic">Logistic Issues (damaged packaging, late delivery, wrong product received)</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="quality" name="complaint_category" value="Quality Complaint">
+                    <label for="quality">Quality Complaint (taste, color, smell, texture)</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="health" name="complaint_category" value="Health Complaint">
+                    <label for="health">Health Complaint (adverse reaction, illness)</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Personal Information Section -->
+        <div class="form-section">
+            <h2><span class="required">Your Information</span></h2>
+            
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+            
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+            
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">Select Country</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+                <option value="Italy">Italy</option>
+                <option value="Spain">Spain</option>
+                <option value="UK">United Kingdom</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label for="address">Address (optional):</label>
+            <textarea id="address" name="address" rows="3"></textarea>
+        </div>
+        
+        <!-- Product Information Section -->
+        <div class="form-section">
+            <h2><span class="required">Product Information</span></h2>
+            
+            <label for="product_name">Product Name:</label>
+            <input type="text" id="product_name" name="product_name" required>
+            
+            <label for="batch_number">Batch/Lot Number (if available):</label>
+            <input type="text" id="batch_number" name="batch_number">
+            
+            <label for="purchase_date">Purchase Date:</label>
+            <input type="text" id="purchase_date" name="purchase_date" placeholder="DD/MM/YYYY">
+            
+            <label for="purchase_location">Where did you purchase this product?</label>
+            <input type="text" id="purchase_location" name="purchase_location">
+        </div>
+        
+        <!-- Complaint Details Section -->
+        <div class="form-section">
+            <h2><span class="required">Complaint Details</span></h2>
+            
+            <label for="complaint_details">Please describe your complaint in detail:</label>
+            <textarea id="complaint_details" name="complaint_details" rows="5" required></textarea>
+            
+            <div id="healthFields" class="hidden">
+                <label for="symptoms">Symptoms experienced (if health complaint):</label>
+                <textarea id="symptoms" name="symptoms" rows="3"></textarea>
+                
+                <label for="doctor_report">Doctor's Report (if available):</label>
+                <input type="file" id="doctor_report" name="doctor_report" accept=".pdf,.jpg,.jpeg,.png">
+            </div>
+        </div>
+        
+        <!-- Photo Upload Section -->
+        <div class="form-section">
+            <h2>Photo Evidence</h2>
+            
+            <p class="photo-requirements">Please upload clear photos of the product showing:</p>
+            <ul class="photo-requirements">
+                <li>Front of the product packaging</li>
+                <li>Back of the product packaging (including ingredient list if possible)</li>
+                <li>Batch/Lot number</li>
+                <li>Any visible issues with the product</li>
+            </ul>
+            
+            <label for="product_photos">Upload Product Photos (multiple allowed):</label>
+            <input type="file" id="product_photos" name="product_photos" multiple accept="image/*">
+            
+            <div id="additionalDamagePhotos" class="hidden">
+                <label for="damage_photos">Upload Photos of Damage (for logistic issues):</label>
+                <input type="file" id="damage_photos" name="damage_photos" multiple accept="image/*">
+            </div>
+        </div>
+        
+        <!-- Consent Section -->
+        <div class="form-section">
+            <h2><span class="required">Consent</span></h2>
+            
+            <input type="checkbox" id="consent" name="consent" required>
+            <label for="consent">I confirm that the information provided is accurate and consent to the processing of this complaint.</label>
+        </div>
+        
+        <button type="submit">Submit Complaint</button>
+    </form>
+
+    <script>
+        // Show/hide health-specific fields when health complaint is selected
+        document.querySelectorAll('input[name="complaint_category"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const healthFields = document.getElementById('healthFields');
+                const damagePhotos = document.getElementById('additionalDamagePhotos');
+                
+                if (this.value === 'Health Complaint') {
+                    healthFields.classList.remove('hidden');
+                    damagePhotos.classList.add('hidden');
+                } else if (this.value === 'Logistic Issues') {
+                    healthFields.classList.add('hidden');
+                    damagePhotos.classList.remove('hidden');
+                } else {
+                    healthFields.classList.add('hidden');
+                    damagePhotos.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
